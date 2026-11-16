@@ -81,4 +81,4 @@
 - **涉及文件**
   - `export_assignments.py`、`tests/test_export_assignments.py`、`docs/CHANGELOG.md`
 
-- **Git 提交**：待提交。
+- **Git 提交**：`64ee463 fix: omit blank lines from exported problems`。
