@@ -99,4 +99,4 @@
   - `tests/test_export_assignments.py` (+18 / -0)
   - `README.md` (+2 / -0)、`docs/CHANGELOG.md`
 
-- **Git 提交**：待提交。
+- **Git 提交**：`f5ba579 fix: wrap exported comments at 35 characters`。远端推送被自动审批拒绝，等待用户明确确认目标仓库与分支。
