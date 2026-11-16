@@ -29,7 +29,7 @@ def parse_course_url(value):
 
 def write_problem(target, title, body):
     lines = [f"# {title}"]
-    lines.extend(f"# {line}" if line else "#" for line in body.splitlines())
+    lines.extend(f"# {line}" for line in body.splitlines() if line.strip())
     target.parent.mkdir(parents=True, exist_ok=True)
     try:
         output = target.open("x", encoding="utf-8")

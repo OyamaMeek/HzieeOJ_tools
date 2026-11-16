@@ -37,7 +37,7 @@ class ExportAssignmentsTest(unittest.TestCase):
 
     def test_writes_problem_comment_and_preserves_existing_file(self):
         title = "整数求和"
-        body = "描述：求两个整数的和。\n\n样例输入：\n1\n2\n样例输出：\n3"
+        body = "描述：求两个整数的和。\n\n样例输入：\n1\n \t\n  2\n样例输出：\n3"
         scratch = Path(__file__).resolve().parents[1] / ".work"
         scratch.mkdir(exist_ok=True)
         with TemporaryDirectory(dir=scratch) as work:
@@ -46,7 +46,7 @@ class ExportAssignmentsTest(unittest.TestCase):
             contents = target.read_text(encoding="utf-8")
             self.assertEqual(
                 contents,
-                "# 整数求和\n# 描述：求两个整数的和。\n#\n# 样例输入：\n# 1\n# 2\n# 样例输出：\n# 3\n",
+                "# 整数求和\n# 描述：求两个整数的和。\n# 样例输入：\n# 1\n#   2\n# 样例输出：\n# 3\n",
             )
             self.assertEqual(ast.parse(contents).body, [])
 

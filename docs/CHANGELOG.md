@@ -66,3 +66,19 @@
   - `.gitignore`、`README.md`、`export_assignments.py`、`tests/test_export_assignments.py`、`docs/CHANGELOG.md`
 
 - **Git 提交**：`2a1e79f feat: publish HzieeOJ assignment exporter`。
+
+---
+
+## [2026-11-16 18:09] 导出题面时省略空行
+
+- **需求/问题描述**
+  > 自动去除题面导出时产生的空白注释行。
+
+- **实际实现的功能与改动**
+  - 跳过题面中的空行和仅含空白字符的行，保留有内容的行及其原始缩进。
+  - 用回归测试复现多余注释，修复后四项本地测试通过。
+
+- **涉及文件**
+  - `export_assignments.py`、`tests/test_export_assignments.py`、`docs/CHANGELOG.md`
+
+- **Git 提交**：待提交。
