@@ -82,3 +82,21 @@
   - `export_assignments.py`、`tests/test_export_assignments.py`、`docs/CHANGELOG.md`
 
 - **Git 提交**：`64ee463 fix: omit blank lines from exported problems`。
+
+---
+
+## [2026-11-16 22:27] 题面注释每行最多 35 个字符
+
+- **需求/问题描述**：
+  > 一行最多 35 个字符，超过后自动换行。
+
+- **实际实现的功能与改动**：
+  - 标题和题面按每段 33 个字符切分，加上 `# ` 前缀后每行最多 35 个字符。保留原有字符、缩进和换行，继续跳过空白行并保护已有文件。
+  - 新增回归测试，先确认旧实现失败，修复后五项 unittest 全部通过；命令帮助和 `git diff --check` 通过。未复测在线导出。
+
+- **涉及文件**：
+  - `export_assignments.py` (+6 / -2)
+  - `tests/test_export_assignments.py` (+18 / -0)
+  - `README.md` (+2 / -0)、`docs/CHANGELOG.md`
+
+- **Git 提交**：待提交。

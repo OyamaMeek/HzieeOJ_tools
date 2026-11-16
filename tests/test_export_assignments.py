@@ -54,3 +54,21 @@ class ExportAssignmentsTest(unittest.TestCase):
             target.write_text(edited, encoding="utf-8")
             self.assertFalse(write_problem(target, title, body))
             self.assertEqual(target.read_text(encoding="utf-8"), edited)
+
+    def test_wraps_title_and_body_to_35_characters_including_comment_prefix(self):
+        title = "长标题" * 12
+        body_lines = ["中" * 33, "a" * 34, "文A" * 33, "字" * 67, "  样例：" + "1  2\t" * 10]
+        scratch = Path(__file__).resolve().parents[1] / ".work"
+        scratch.mkdir(exist_ok=True)
+        with TemporaryDirectory(dir=scratch) as work:
+            target = Path(work) / "1.py"
+            self.assertTrue(write_problem(target, title, "\n\n".join(body_lines)))
+            contents = target.read_text(encoding="utf-8")
+            lines = contents.splitlines()
+            self.assertTrue(all(line.startswith("# ") and len(line) <= 35 for line in lines))
+            self.assertEqual(
+                lines[:4],
+                [f"# {title[:33]}", f"# {title[33:]}", f"# {body_lines[0]}", f"# {'a' * 33}"],
+            )
+            self.assertEqual("".join(line[2:] for line in lines), title + "".join(body_lines))
+            self.assertEqual(ast.parse(contents).body, [])
