@@ -48,7 +48,7 @@
 - **涉及文件**
   - `export_assignments.py`、`tests/test_export_assignments.py`、`README.md`、`.gitignore`、`docs/CHANGELOG.md`、`memory/`
 
-- **Git 提交**：当前工具目录无 Git 仓库。目标公开仓库为空，等待许可证及发布确认。
+- **Git 提交**：`2a1e79f feat: publish HzieeOJ assignment exporter`。
 
 ---
 
@@ -60,8 +60,9 @@
 - **实际实现的功能与改动**
   - 初始化 `main` 分支，将 `origin` 设为 `https://github.com/OyamaMeek/HzieeOJ_tools.git`。
   - 四项本地测试通过，命令帮助正常。
+  - 首个提交已推送至 `origin/main`，并设置上游跟踪。
 
 - **涉及文件**
   - `.gitignore`、`README.md`、`export_assignments.py`、`tests/test_export_assignments.py`、`docs/CHANGELOG.md`
 
-- **Git 提交**：待提交。
+- **Git 提交**：`2a1e79f feat: publish HzieeOJ assignment exporter`。
