@@ -117,4 +117,4 @@
   - 本地作业目录 `assignments/5-261116/1.py` 至 `10.py`
   - 工具仓库 `docs/CHANGELOG.md`；本地忽略目录 `.work/`、`memory/`
 
-- **Git 提交**：待提交开发记录；本地作业文件保留在原工作区，未纳入工具仓库。
+- **Git 提交**：`cdb664b docs: record local U05 comment reformatting`。本地作业文件保留在原工作区，未纳入工具仓库。
