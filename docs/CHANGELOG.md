@@ -136,3 +136,21 @@
   - `run.command`、`tests/test_launcher.py`、`README.md`、`docs/CHANGELOG.md`；本地忽略目录 `memory/`、`.work/`。
 
 - **Git 提交**：`a2f4cf3 feat: add one-click macOS launcher`，已普通推送至 `origin/main`。
+
+---
+
+## [2026-11-20 22:14] 从本地 JSON 配置读取作业目录
+
+- **需求/问题描述**：
+  > 将作业目录保存在本地 JSON 配置文件中。
+
+- **实际实现的功能与改动**：
+  - 无参数启动时读取 `config.local.json` 的 `assignments` 字段，通过 Python 标准库解析 JSON 并校验目录字段；缺少配置文件时继续提示输入目录，CLI 参数仍可直接指定目录。
+  - 本地配置填入已确认存在的作业目录并加入 Git 忽略规则，README 说明配置格式和运行方式。
+  - 新增测试先复现缺少 JSON 配置读取的行为，再实现读取；12 项 unittest 全部通过，覆盖含空格路径、无效 JSON、缺失或错误类型字段、相对路径及 CLI 参数优先。Shell 语法、diff 检查与 Git 忽略规则验证通过。未复测在线导出。
+
+- **涉及文件**：
+  - `run.command`、`tests/test_launcher.py`、`.gitignore`、`README.md`、`docs/CHANGELOG.md`。
+  - 本地忽略文件 `config.local.json`，以及本地记录 `memory/`。
+
+- **Git 提交**：待提交。

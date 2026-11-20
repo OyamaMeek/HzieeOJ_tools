@@ -6,7 +6,17 @@
 
 ## 一键运行
 
-下载项目后，双击 `run.command`，按提示输入已有 `assignments` 目录的绝对路径（无需引号）和「我的实训」页完整地址。脚本会自动创建虚拟环境、安装 Playwright 并开始导出；首次安装依赖需要联网。运行结束后按回车关闭窗口。
+在项目根目录创建本地配置文件 `config.local.json`，在 `assignments` 字段填写已有作业目录的绝对路径，例如：
+
+```json
+{
+  "assignments": "/path/to/py-labs/assignments"
+}
+```
+
+双击 `run.command`，脚本会读取配置中的作业目录，再提示输入「我的实训」页完整地址。没有配置文件时，会提示输入作业目录。修改作业位置时，直接编辑 `config.local.json`；该文件已加入 Git 忽略规则。配置格式错误或目录无效时会报错并停止。
+
+脚本会自动创建虚拟环境、安装 Playwright 并开始导出；首次安装依赖需要联网。运行结束后按回车关闭窗口。
 
 也可以在终端克隆并运行：
 
@@ -16,7 +26,7 @@ cd HzieeOJ_tools
 ./run.command
 ```
 
-在终端指定参数时，直接传给 `run.command`：
+在终端指定参数时，直接传给 `run.command`，此时使用参数中的作业目录：
 
 ```bash
 ./run.command "/path/to/py-labs/assignments" \
