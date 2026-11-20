@@ -2,14 +2,24 @@
 
 从实训管理平台读取题面，为 PyCharm 项目生成按题号命名的 Python 文件。每个新文件的开头包含题名、描述、输入输出格式和样例。
 
-在 macOS 终端运行以下命令。需要 Python 3.9 或更新版本、已安装的 Google Chrome，以及能访问实训平台的校园网或 VPN。
+需要 macOS、Python 3.9 或更新版本、已安装的 Google Chrome，以及能访问实训平台的校园网或 VPN。
+
+## 一键运行
+
+下载项目后，双击 `run.command`，按提示输入已有 `assignments` 目录的绝对路径（无需引号）和「我的实训」页完整地址。脚本会自动创建虚拟环境、安装 Playwright 并开始导出；首次安装依赖需要联网。运行结束后按回车关闭窗口。
+
+也可以在终端克隆并运行：
 
 ```bash
 git clone https://github.com/OyamaMeek/HzieeOJ_tools.git
 cd HzieeOJ_tools
-python3 -m venv .venv
-.venv/bin/python -m pip install playwright
-.venv/bin/python export_assignments.py "/path/to/py-labs/assignments" \
+./run.command
+```
+
+在终端指定参数时，直接传给 `run.command`：
+
+```bash
+./run.command "/path/to/py-labs/assignments" \
   --course-url 'https://training.example/dashboard/myProject?courseId=123'
 ```
 

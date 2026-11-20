@@ -118,3 +118,20 @@
   - 工具仓库 `docs/CHANGELOG.md`；本地忽略目录 `.work/`、`memory/`
 
 - **Git 提交**：`cdb664b docs: record local U05 comment reformatting`。本地作业文件保留在原工作区，未纳入工具仓库。
+
+---
+
+## [2026-11-20 22:03] 新增 macOS 一键启动脚本
+
+- **需求/问题描述**：
+  > 做一个一键脚本。
+
+- **实际实现的功能与改动**：
+  - 新增可双击的 `run.command`，按需创建虚拟环境、安装 Playwright，提示输入作业目录和课程地址后调用现有导出器，也可传入原有 CLI 参数。
+  - 交互终端运行结束后等待回车，保留错误退出码；更新 README 的一键运行说明。
+  - 4 项新增测试先确认缺少入口时失败，实现后 9 项 unittest、Shell 语法及 diff 检查通过。真实 TTY 验证错误显示、回车关闭和退出码 2。全新目录首次安装验证进行中；未验证 Finder 双击或在线课程导出。
+
+- **涉及文件**：
+  - `run.command`、`tests/test_launcher.py`、`README.md`、`docs/CHANGELOG.md`；本地忽略目录 `memory/`、`.work/`。
+
+- **Git 提交**：待提交。
