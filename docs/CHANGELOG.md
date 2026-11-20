@@ -129,9 +129,10 @@
 - **实际实现的功能与改动**：
   - 新增可双击的 `run.command`，按需创建虚拟环境、安装 Playwright，提示输入作业目录和课程地址后调用现有导出器，也可传入原有 CLI 参数。
   - 交互终端运行结束后等待回车，保留错误退出码；更新 README 的一键运行说明。
-  - 4 项新增测试先确认缺少入口时失败，实现后 9 项 unittest、Shell 语法及 diff 检查通过。真实 TTY 验证错误显示、回车关闭和退出码 2。全新目录首次安装验证进行中；未验证 Finder 双击或在线课程导出。
+  - 4 项新增测试先确认缺少入口时失败，实现后 9 项 unittest、Shell 语法及 diff 检查通过。真实 TTY 验证错误显示、回车关闭和退出码 2。
+  - 在含空格的全新目录中实际创建虚拟环境、安装 Playwright 1.60.0，并成功运行命令帮助，退出码为 0。未验证 Finder 双击或在线课程导出。
 
 - **涉及文件**：
   - `run.command`、`tests/test_launcher.py`、`README.md`、`docs/CHANGELOG.md`；本地忽略目录 `memory/`、`.work/`。
 
-- **Git 提交**：待提交。
+- **Git 提交**：`a2f4cf3 feat: add one-click macOS launcher`，已普通推送至 `origin/main`。
