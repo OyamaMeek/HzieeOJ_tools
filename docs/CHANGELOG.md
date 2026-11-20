@@ -153,4 +153,4 @@
   - `run.command`、`tests/test_launcher.py`、`.gitignore`、`README.md`、`docs/CHANGELOG.md`。
   - 本地忽略文件 `config.local.json`，以及本地记录 `memory/`。
 
-- **Git 提交**：待提交。
+- **Git 提交**：`2c79698 feat: read assignment directory from local JSON config`，已普通推送至 `origin/main`。
