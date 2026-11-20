@@ -154,3 +154,21 @@
   - 本地忽略文件 `config.local.json`，以及本地记录 `memory/`。
 
 - **Git 提交**：`2c79698 feat: read assignment directory from local JSON config`，已普通推送至 `origin/main`。
+
+---
+
+## [2026-11-20 22:46] 在本地配置中保存课程地址
+
+- **需求/问题描述**：
+  > 把实际使用的课程也填入本地配置。
+
+- **实际实现的功能与改动**：
+  - 从同一项目的原始聊天找回课程地址并写入本地 `config.local.json` 的 `course_url` 字段，配置齐全时双击即可启动导出；缺少该字段时继续提示输入。
+  - 复用导出器的 `main` 和课程地址校验，检查配置字段类型；README 补充 JSON 示例，真实课程地址保持在被 Git 忽略的本地配置中。
+  - 新增回归测试先确认旧入口未读取课程地址，修改后 14 项 unittest 全部通过。Shell 语法、diff 检查、本地目录及 URL 格式校验、Git 忽略和公开文件检查通过。未访问在线课程。
+
+- **涉及文件**：
+  - `run.command`、`tests/test_launcher.py`、`README.md`、`docs/CHANGELOG.md`。
+  - 被 Git 忽略的本地 `config.local.json` 和 `memory/`。
+
+- **Git 提交**：待提交。

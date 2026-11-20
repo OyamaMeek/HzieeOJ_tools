@@ -85,6 +85,27 @@ class LauncherTest(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("JSONDecodeError", result.stderr)
 
+    def test_reads_configured_course_url_without_prompting(self):
+        assignments = self.work / "不存在的 作业目录"
+        (self.work / "config.local.json").write_text(json.dumps({
+            "assignments": str(assignments),
+            "course_url": "https://training.example/dashboard/myProject?courseId=123",
+        }), encoding="utf-8")
+        result = self.run_launcher()
+        self.assertEqual(result.returncode, 2, result.stderr)
+        self.assertIn(f"作业目录不存在：{assignments}", result.stderr)
+
+    def test_rejects_invalid_configured_course_url(self):
+        for course_url in (None, 123, "", "https://training.example/"):
+            with self.subTest(course_url=course_url):
+                (self.work / "config.local.json").write_text(json.dumps({
+                    "assignments": str(self.work),
+                    "course_url": course_url,
+                }), encoding="utf-8")
+                result = self.run_launcher()
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("课程", result.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

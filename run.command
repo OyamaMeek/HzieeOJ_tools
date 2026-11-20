@@ -21,24 +21,29 @@ if ! .venv/bin/python -m pip show playwright >/dev/null 2>&1; then
     .venv/bin/python -m pip install playwright
 fi
 
-if [[ $# -eq 0 ]]; then
-    if [[ -e config.local.json ]]; then
-        assignments=$(.venv/bin/python -c '
+if [[ $# -eq 0 && -e config.local.json ]]; then
+    .venv/bin/python -c '
 import json
 import sys
 from pathlib import Path
+
+from export_assignments import main
 
 config = json.loads(Path("config.local.json").read_text(encoding="utf-8"))
 directory = config.get("assignments") if isinstance(config, dict) else None
 if not isinstance(directory, str) or not Path(directory).is_absolute():
     sys.exit("config.local.json 中的 assignments 必须为作业目录的绝对路径。")
-print(directory)
-')
-    else
+course_url = config["course_url"] if "course_url" in config else input("请粘贴「我的实训」课程列表完整地址：")
+if not isinstance(course_url, str):
+    sys.exit("config.local.json 中的 course_url 必须为课程地址字符串。")
+sys.argv = ["export_assignments.py", directory, "--course-url", course_url]
+main()
+'
+else
+    if [[ $# -eq 0 ]]; then
         read -r -p '请输入 assignments 目录的绝对路径（无需引号）：' assignments
+        read -r -p '请粘贴「我的实训」课程列表完整地址：' course_url
+        set -- "$assignments" --course-url "$course_url"
     fi
-    read -r -p '请粘贴「我的实训」课程列表完整地址：' course_url
-    set -- "$assignments" --course-url "$course_url"
+    .venv/bin/python export_assignments.py "$@"
 fi
-
-.venv/bin/python export_assignments.py "$@"
