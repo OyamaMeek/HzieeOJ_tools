@@ -171,4 +171,4 @@
   - `run.command`、`tests/test_launcher.py`、`README.md`、`docs/CHANGELOG.md`。
   - 被 Git 忽略的本地 `config.local.json` 和 `memory/`。
 
-- **Git 提交**：待提交。
+- **Git 提交**：`e8e113e feat: read course URL from local JSON config`，已普通推送至 `origin/main`。
